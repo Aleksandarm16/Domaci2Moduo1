@@ -72,7 +72,7 @@ namespace Domaci2Moduo1
                 else if (izmena == 2)
                 {
                     Console.WriteLine("Od opreme automobil ima:");
-                    for (int i = 0; i < x.ProdavnicaAuta[redniBrojOglasa].DodatnaOprema.Length; i++)
+                    for (int i = 0; i < x.ProdavnicaAuta[redniBrojOglasa].DodatnaOprema.Count; i++)
                     {
                         Console.WriteLine(i+1+" "  + x.ProdavnicaAuta[redniBrojOglasa].DodatnaOprema[i]);
                     }

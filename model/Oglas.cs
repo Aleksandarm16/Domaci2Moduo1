@@ -13,9 +13,9 @@ namespace Domaci2Moduo1
         public string NaslovOglasa { get; set; }
         public int CenaOglasa { get; set; }
         public int GodinaProizvodnje { get; set; }
-        public string[] DodatnaOprema { get; set; } = new string[5];
+        public List<string> DodatnaOprema { get; set; }
 
-        public Oglas(string SifraOglasa,string NaslovOglasa, int CenaOglasa,int GodinaProizvodnje,string[] DodatnaOprema)
+        public Oglas(string SifraOglasa,string NaslovOglasa, int CenaOglasa,int GodinaProizvodnje,List<string> DodatnaOprema)
         {
             this.SifraOglasa = SifraOglasa;
             this.NaslovOglasa = NaslovOglasa;
@@ -34,12 +34,20 @@ namespace Domaci2Moduo1
 
         public void DodavanjeDelaOpreme (string y)
         {
-            
-            List<string> ls = DodatnaOprema.ToList();
-            ls.Add(y);
-            DodatnaOprema = ls.ToArray();
+
+            // List<string> ls = DodatnaOprema.ToList();
+            //ls.Add(y);
+            //DodatnaOprema = ls.ToArray();
+            DodatnaOprema.Add(y);
             
         }
+        public void DefinisanjeNovogSkupaOpreme(List<string> x)
+        {
+            DodatnaOprema.Clear();
+
+            DodatnaOprema = x;
+        }
+        
 
 
     }

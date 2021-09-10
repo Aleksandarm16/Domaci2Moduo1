@@ -28,9 +28,10 @@ namespace Domaci2Moduo1
                 Console.WriteLine("4.Izmena detalja o vozilu");
                 Console.WriteLine("5.Filtriranje oglasa po ceni");
                 Console.WriteLine("6.Filtriranje po opremi");
-
+                Console.WriteLine("7.Definisanje novog skupa opreme");
                 Console.WriteLine("8.Dodavanje nove opreme");
-
+                Console.WriteLine("9.Unos novog oglasa");
+                Console.WriteLine("10.Brisanje oglasa");
 
                 Console.WriteLine("0.Izlaz");
                 opcija = Int32.Parse(Console.ReadLine());
@@ -87,19 +88,18 @@ namespace Domaci2Moduo1
                     case 6:
                         Console.Clear();
                         Console.WriteLine("Unesite zeljenu opremu i razdvojite je zarezom");
-                        string pretragaOpreme = Console.ReadLine();
-                        string[] listaOpreme = pretragaOpreme.Split(',');
-                        AutoProdavnica.IspisOglasaPretragaPoOpremi(listaOpreme);
+                        string opremaSKonzole = Console.ReadLine();
+                        string[] deloviOpreme = opremaSKonzole.Split(',');
+                        
+                        AutoProdavnica.IspisOglasaPretragaPoOpremi(deloviOpreme);
                         //nece neke delove da ispise (konkretno oglas 4 poslednji string )
 
                         break;
                     case 7:
                         Console.Clear();
                         Console.WriteLine("Unesite sifru oglasa");
-                        string sifra = Console.ReadLine();
-                        Console.WriteLine("Unesi novu dodatnu opremeu razdvojenu sa ;");
-                        string novaOprema = Console.ReadLine();
-                        AutoProdavnica.NoviSkupOpreme(sifra, novaOprema);
+                        string sifra = Console.ReadLine();                        
+                        AutoProdavnica.NoviSkupOpreme(sifra);
 
                         break;
                     case 8:
@@ -111,7 +111,13 @@ namespace Domaci2Moduo1
                         AutoProdavnica.DodavanjeOpreme(sifraZaDodavanje, opremaZaDodavanje);
 
                         break;
-
+                    case 9:
+                        Prodavnica.NovOglas(MojaProdavnica);
+                        
+                        break;
+                    case 10:
+                        Prodavnica.BrisanjeOglasa(MojaProdavnica);
+                        break;
                     case 0:
                         break;
                     default:

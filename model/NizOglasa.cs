@@ -21,7 +21,7 @@ namespace Domaci2Moduo1
               
                 string[] deloviOglasa = citanje[i].Split(';');
                
-                string[] deloviOpreme = deloviOglasa[4].Split(',');
+                List<string> deloviOpreme = deloviOglasa[4].Split(',').ToList();
                 
                 
                 Oglas pOglase = new Oglas(deloviOglasa[0], deloviOglasa[1], Int32.Parse(deloviOglasa[2]), Int32.Parse(deloviOglasa[3]), deloviOpreme);

@@ -13,10 +13,7 @@ namespace Domaci2Moduo1
         {
             ProdavnicaAuta = x;
         }
-        public Prodavnica(Oglas pOglas)
-        {
-            ProdavnicaAuta.Add(pOglas);
-        }
+        
         public void IspisSvihOglasa()
         {
             for (int i = 0; i < ProdavnicaAuta.Count; i++)
@@ -49,7 +46,7 @@ namespace Domaci2Moduo1
                     
                     Console.WriteLine("Sifra Oglasa: " + ProdavnicaAuta[i].SifraOglasa + " Naslov Oglasa: " +ProdavnicaAuta[i].NaslovOglasa + " Cena Oglasa: " + ProdavnicaAuta[i].CenaOglasa);
                     Console.WriteLine("Od dodatne opreme ima: ");
-                    for (int j = 0; j < ProdavnicaAuta[i].DodatnaOprema.Length; j++)
+                    for (int j = 0; j < ProdavnicaAuta[i].DodatnaOprema.Count; j++)
                     {
                         //Console.Write ne radi(ne ispisuje prvi clan kako treba)
                         Console.WriteLine(ProdavnicaAuta[i].DodatnaOprema[j]);
@@ -96,7 +93,7 @@ namespace Domaci2Moduo1
             for (int i = 0; i < ProdavnicaAuta.Count; i++)
             {
                 int tmp = 0;
-                for (int j = 0; j < ProdavnicaAuta[i].DodatnaOprema.Length; j++)
+                for (int j = 0; j < ProdavnicaAuta[i].DodatnaOprema.Count; j++)
                 {
                     
                     for (int k = 0; k < zeljenaOprema.Length; k++)
@@ -124,22 +121,100 @@ namespace Domaci2Moduo1
                     ProdavnicaAuta[i].DodavanjeDelaOpreme(oprema);
             }
         }
-        public void NoviSkupOpreme (string sifra, string oprema)
+        public void NoviSkupOpreme (string sifra)
         {
-            int redniBroj = 0;
+            int redniBrojOglasa = 0;
+            
+            string deoOpreme;
+            bool tmp = false;
             List<string> novaOprema = new List<string>();
             for (int i = 0; i < ProdavnicaAuta.Count; i++)
             {
                 if(ProdavnicaAuta[i].SifraOglasa==sifra)
                 {
-                    redniBroj = i;
-                    novaOprema = oprema.Split(';').ToList();
+                    redniBrojOglasa = i;
+                    tmp = true;
                 }
             }
-            for (int i = 0; i < novaOprema.Count; i++)
+            if(tmp)
             {
-                ProdavnicaAuta[redniBroj].DodatnaOprema[i] = novaOprema[i];
+                do
+                {
+                    Console.WriteLine("Unesite deo opreme za unos, za prekid unesite 0:");
+                    deoOpreme = Console.ReadLine();
+                    if(deoOpreme!="0")
+                    {
+                        novaOprema.Add(deoOpreme);
+                    }
+
+
+                } while (deoOpreme!="0");
+                ProdavnicaAuta[redniBrojOglasa].DefinisanjeNovogSkupaOpreme(novaOprema);
             }
+            else
+            {
+                Console.WriteLine("Pogresna sifra!");
+            }
+            
         }
+        public static void NovOglas(List<Oglas> listaOglasa)
+        {
+
+            List<string> listaOpreme = new List<string>();
+            string novaOprema;
+            Console.Clear();
+            Console.WriteLine("Unesite sifru oglasa");
+            string novaSifra = Console.ReadLine();
+            Console.WriteLine("Unesite naziv oglasa:");
+            string novNaziv = Console.ReadLine();
+            Console.WriteLine("Unesite cenu oglasa");
+            int novaCena = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Unesite godiste automobila");
+            int novaGodina = Int32.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("Unesite dodatnu opremmu, za prekid unesite 0");
+                novaOprema = Console.ReadLine();
+                if (novaOprema != "0")
+                {
+                    listaOpreme.Add(novaOprema);
+                }
+
+            } while (novaOprema != "0");
+            Oglas novOglas = new Oglas(novaSifra, novNaziv, novaCena, novaGodina, listaOpreme);
+            listaOglasa.Add(novOglas);
+        }
+        public static void BrisanjeOglasa(List<Oglas> listaOglasa)
+        {
+            bool provera=false;
+            int redniBrojOglasa = 0;
+            Console.WriteLine("Unesite sifru oglasa za brisanje");
+            string sifra = Console.ReadLine();
+            for (int i = 0; i < listaOglasa.Count; i++)
+            {
+                if (sifra == listaOglasa[i].SifraOglasa)
+                {
+                    provera = true;
+                    redniBrojOglasa = i;
+                    break;
+                }
+                else
+                {
+                    provera = false;
+                    
+                }
+            }
+            if(provera)
+            {
+                listaOglasa.RemoveAt(redniBrojOglasa);
+            }
+            else
+            {
+                Console.WriteLine("Uneli ste pogresnu sifru oglasa");
+            }
+
+        }
+        
+        
     }
 }
