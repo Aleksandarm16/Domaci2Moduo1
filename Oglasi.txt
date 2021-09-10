@@ -1,0 +1,5 @@
+﻿A1;Reno Klio;2000;2001;ABS,ESP,Alarm,DVD,klima
+A2;Golf IV;1000;2001;servo volan,putni racunar,tempomat,zatamljena stakla,DVD
+A3;Dacia;3000;2019;ABS,alarm,CD,DVD,Parking Senzor
+A4;Nisan;2500;2012;ABS,ESP,alarm,DVD,CD
+A5;Mazda;5000;2015;ABS,CD,DVD,zatamljena stakla,klima

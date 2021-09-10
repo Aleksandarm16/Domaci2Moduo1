@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,18 +24,13 @@ namespace Domaci2Moduo1
             this.DodatnaOprema = DodatnaOprema;
         }
 
-        public void IspisOglasa (int x)
+
+        public void IspisPojedinacnogOglasa(int rednibroj)
         {
-            Console.WriteLine("Redni broj Oglasa: "+ x +" Sifra oglasa: "+SifraOglasa+" Naslov Oglasa: "+NaslovOglasa+" Cena Oglasa: "+CenaOglasa );
+            Console.WriteLine("Redni broj Oglasa: " + rednibroj + " Sifra oglasa: " +SifraOglasa + " Naslov Oglasa: " + NaslovOglasa
+                    + " Cena Oglasa: " + CenaOglasa);
         }
-        public void IspisCelogOglasa()
-        {
-            Console.WriteLine("Sifra Oglasa: "+SifraOglasa+" Naslov Oglasa: "+ NaslovOglasa+ " Cena Oglasa: "+CenaOglasa);
-            Console.WriteLine("Od dodatne opreme ima: ");
-            for (int i = 0; i < DodatnaOprema.Length; i++)
-                Console.Write(DodatnaOprema[i] + " ");
-            Console.WriteLine();
-        }
+       
 
         public void DodavanjeDelaOpreme (string y)
         {
